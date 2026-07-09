@@ -11,6 +11,9 @@
 
   ## TODO:
 
-  - [ ] extract components
+  - [x] extract components
+  - [x] data - consts
+  - [ ] progress bar - debounce
   - [ ] printable version - pdf
+  - [ ] data fetch
   
