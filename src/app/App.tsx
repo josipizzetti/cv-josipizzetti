@@ -6,6 +6,10 @@ import StackIcon from "tech-stack-icons";
 import minisThumb from "@/assets/minis-thumb.jpeg";
 import fithiitbyanaThumb from "@/assets/fithiitbyana-thumb.png";
 import gaspedaalThumb from "@/assets/gaspedaal-thumb.png";
+import { ProjectPreview } from "./components/layout/ProjectPreview";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -145,60 +149,8 @@ const EDUCATION = [
   },
 ];
 
-function ProjectPreview({ type, bg, url, thumb }: { type: "bars" | "waves" | "grid" | "website"; bg: string; url?: string; thumb?: string }) {
-  const accent = bg === "#f3ec86" ? "#000000" : "#f3ec86";
-
-  return (
-    <div className="w-full aspect-video overflow-hidden relative rounded-sm" style={{ background: bg }}>
-      {type === "website" && (
-        <div className="w-full h-full p-4 flex flex-col justify-between" style={{ background: bg }}>
-          <div className="flex flex-col gap-3">
-            <div className="h-9 rounded-xl bg-white/10 border border-white/10 backdrop-blur-sm flex items-center px-3 text-[11px] text-white/60 tracking-[0.18em] uppercase">
-              {url ? url.replace(/^https?:\/\//, "") : "preview.site"}
-            </div>
-            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/10 to-transparent shadow-inner">
-              {thumb ? (
-                <img
-                  src={thumb}
-                  alt={url ? `${url} thumbnail` : "Website thumbnail"}
-                  className="w-full h-32 object-cover"
-                />
-              ) : (
-                <div className="h-32 bg-[#0b1220] flex items-center justify-center text-white/30 text-[12px] uppercase tracking-[0.15em]">
-                  Website preview
-                </div>
-              )}
-              <div className="p-4 space-y-3">
-                <div className="h-3 rounded-full bg-white/10" />
-                <div className="h-3 rounded-full bg-white/10 w-5/6" />
-                <div className="grid grid-cols-3 gap-2 mt-2">
-                  <div className="h-3 rounded-full bg-white/10" />
-                  <div className="h-3 rounded-full bg-white/10" />
-                  <div className="h-3 rounded-full bg-white/10" />
-                </div>
-                <div className="h-24 rounded-xl bg-white/5" />
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-between items-center text-[10px] uppercase text-white/40 tracking-[0.3em]">
-            <span>Desktop</span>
-            <span>Responsive</span>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function App() {
-  const [scrolled, setScrolled] = useState(false);
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <div
@@ -206,32 +158,7 @@ export default function App() {
       style={{ fontFamily: "'DM Sans', sans-serif", scrollBehavior: "smooth" }}
     >
       {/* ── NAV ─────────────────────────────────────────────── */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-black/96 backdrop-blur-sm border-b border-white/10" : ""
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span
-            className="text-sm tracking-[0.25em] uppercase text-[#f3ec86]"
-            style={{ fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            JSP
-          </span>
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-xs tracking-widest uppercase text-white/40 hover:text-[#f3ec86] transition-colors duration-200"
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16">
@@ -663,45 +590,8 @@ export default function App() {
       </section>
 
       {/* ── FOOTER ──────────────────────────────────────────── */}
-      <footer className="border-t border-white/10 py-10 bg-black">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <p
-              className="text-[10px] text-white/20 tracking-[0.3em] uppercase"
-              style={{ fontFamily: "'JetBrains Mono', monospace" }}
-            >
-              Josiane S. Pizzetti · Front-End Engineer · 2026
-            </p>
-          </div>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://github.com/josipizzetti"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/25 hover:text-[#f3ec86] transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={16} />
-            </a>
-            <a
-              href="https://linkedin.com/in/josipizzetti"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/25 hover:text-[#f3ec86] transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href="mailto:josipizzetti@gmail.com"
-              className="text-white/25 hover:text-[#f3ec86] transition-colors"
-              aria-label="Email"
-            >
-              <Mail size={16} />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+            
     </div>
   );
 }
