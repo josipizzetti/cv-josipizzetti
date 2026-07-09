@@ -1,24 +1,10 @@
 import { useEffect, useState } from "react";
-
-const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-];
+import { NAV_LINKS } from "@/app/constants/navLinks";
+import { useScroll } from "@/app/hooks/useScroll";
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { scrolled, scrollProgress } = useScroll(60);
+  
 
   return (
     <nav
@@ -26,6 +12,10 @@ const Header = () => {
         scrolled ? "bg-black/96 backdrop-blur-sm border-b border-white/10" : ""
       }`}
     >
+      <div 
+        className="h-0.5 bg-[#f3ec86] transition-all duration-300"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <span
           className="text-sm tracking-[0.25em] uppercase text-[#f3ec86]"

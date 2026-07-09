@@ -1,5 +1,3 @@
-"use client";
-
 interface ProjectPreviewProps {
   type: "website";
   bg: string;
