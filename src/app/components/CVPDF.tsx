@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     objectFit: 'cover',
+    filter: 'grayscale(100%)',
   },
   nameContainer: {
     flex: 1,
