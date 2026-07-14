@@ -9,7 +9,7 @@ export const Projects = () => {
     <section id="projects" className="py-28 border-t border-white/10 bg-[#080808]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
-          <SectionHeader index="04" label="Projects" title={<>Selected<br />Work</>} />
+          <SectionHeader index="05" label="Projects" title={<>Selected<br />Work</>} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">

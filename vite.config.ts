@@ -21,9 +21,35 @@ export default defineConfig({
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
-    react(),
+    react({
+      // Optimized for React 18.3.1
+      fastRefresh: true,
+      jsxRuntime: 'automatic',
+    }),
     tailwindcss(),
   ],
+  // Optimize dependencies to avoid loading issues
+  optimizeDeps: {
+    include: [
+      '@react-pdf/renderer',
+      'react',
+      'react-dom',
+    ],
+  },
+  build: {
+    // Handle commonjs modules properly
+    commonjsOptions: {
+      include: [/@react-pdf\/renderer/, /node_modules/],
+    },
+    rollupOptions: {
+      output: {
+        // Separate PDF library into its own chunk
+        manualChunks: {
+          'react-pdf': ['@react-pdf/renderer'],
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       // Alias @ to the src directory

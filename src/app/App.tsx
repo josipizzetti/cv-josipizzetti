@@ -4,8 +4,10 @@ import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
+import Leadership from "./components/sections/Leadership";
 import { Projects } from "./components/sections/Projects";
 import Education from "./components/sections/Education";
+import { PDFDownloadButton } from "./components/PDFDownloadButton";
 
 const App = () => (
   <div
@@ -13,13 +15,17 @@ const App = () => (
     style={{ fontFamily: "'DM Sans', sans-serif", scrollBehavior: "smooth" }}
   >
     <Header />
-    <Hero />
-    <About />
-    <Skills />
-    <Experience />
-    <Projects />
-    <Education />
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Leadership />
+      <Projects />
+      <Education />
+    </main>
     <Footer />
+    <PDFDownloadButton />
   </div>
 );
 
