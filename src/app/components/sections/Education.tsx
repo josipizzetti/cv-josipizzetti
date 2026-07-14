@@ -6,7 +6,7 @@ const Education: React.FC = () => {
   return (
     <section id="education" className="py-28 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6">
-      <SectionHeader index="05" label="Education" title={<>Academic<br />Background</>} className='mb-16' />
+      <SectionHeader index="06" label="Education" title={<>Academic<br />Background</>} className='mb-16' />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {EDUCATION.map((edu, i) => (
             <div key={i} className="border-l-2 border-[#D4D4D4] pl-8 py-2 group">
