@@ -13,7 +13,7 @@
 
   - [x] extract components
   - [x] data - consts
-  - [ ] progress bar - debounce
-  - [ ] printable version - pdf
-  - [ ] data fetch
+  - [x] progress bar - debounce
+  - [x] printable version - pdf
+  - [ ] data fetch + Graphql
   
