@@ -1,4 +1,4 @@
-type EducationType = {
+export type EducationType = {
   degree: string;
   institution: string;
   period: string;

@@ -1,14 +1,14 @@
 import React from "react";
 import StackIcon from "tech-stack-icons";
 
-type Skill = {
+export type SkillsType = {
   name: string;
   abbr: React.ReactNode;
   bg: string;
   fg: string;
 };
 
-export const SKILLS: Skill[] = [
+export const SKILLS: SkillsType[] = [
   { name: "JavaScript", abbr: React.createElement(StackIcon, { name: "js", variant: "dark" }), bg: "#F7DF1E", fg: "#000000" },
   { name: "CSS3", abbr: React.createElement(StackIcon, { name: "css3", variant: "dark" }), bg: "#264de4", fg: "#ffffff" },
   { name: "HTML5", abbr: React.createElement(StackIcon, { name: "html5", variant: "dark" }), bg: "#e34f26", fg: "#ffffff" },

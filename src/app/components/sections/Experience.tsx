@@ -1,15 +1,65 @@
 import { MapPin } from 'lucide-react';
-import { EXPERIENCE, ExperienceType } from '@/app/constants/experience';
+import { ExperienceType } from '@/app/constants/experience';
 import { SkillsBadge } from '../shared/SkillsBadge';
 import SectionHeader from '../shared/SectionHeader';
+import { useData } from '@/app/hooks/useData';
 
 export default function Experience() {
+  const { data, loading, error } = useData<ExperienceType[]>('experience');
+
+  if (loading) {
+    return (
+      <section id="experience" className="py-28 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-10 animate-pulse">
+            <div className="h-3 w-16 rounded bg-white/10 mb-4" />
+            <div className="h-8 w-56 rounded bg-white/10" />
+          </div>
+
+          <div className="space-y-8">
+            {Array.from({ length: 2 }).map((_, index) => (
+              <div
+                key={index}
+                className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-white/10"
+              >
+                <div className="md:col-span-3 space-y-3">
+                  <div className="h-3 w-24 rounded bg-white/10" />
+                  <div className="h-3 w-32 rounded bg-white/10" />
+                </div>
+
+                <div className="hidden md:flex md:col-span-1 justify-center">
+                  <div className="w-px h-24 bg-white/10" />
+                </div>
+
+                <div className="md:col-span-8 space-y-3">
+                  <div className="h-5 w-48 rounded bg-white/10" />
+                  <div className="h-3 w-40 rounded bg-white/10" />
+                  <div className="h-3 w-full rounded bg-white/10" />
+                  <div className="h-3 w-4/5 rounded bg-white/10" />
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="h-6 w-16 rounded-full bg-white/10" />
+                    <div className="h-6 w-20 rounded-full bg-white/10" />
+                    <div className="h-6 w-14 rounded-full bg-white/10" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return <p className="text-xs text-red-500 md:text-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Error: {error}</p>;
+  }
+  
   return (
     <section id="experience" className="py-28 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader index="03" label="Experience" title={<>Where I've<br />Worked</>}/>
         <div>
-          {EXPERIENCE.map((exp: ExperienceType, i: number) => (
+          {data?.map((exp: ExperienceType, i: number) => (
             <div
               key={i}
               className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-white/10 hover:bg-white/[0.02] transition-colors duration-300"

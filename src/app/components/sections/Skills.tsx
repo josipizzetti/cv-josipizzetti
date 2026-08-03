@@ -1,7 +1,42 @@
-import { SKILLS } from "@/app/constants/skills";
+import { SKILLS, SkillsType } from "@/app/constants/skills";
 import SectionHeader from "../shared/SectionHeader";
+import { useData } from "@/app/hooks/useData";
 
 export default function Skills() {
+  const { data, loading, error } = useData('skills');
+
+  if (loading) {
+    return (
+      <section id="skills" className="py-28 border-t border-white/10 bg-[#080808]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+            <div className="space-y-2">
+              <div className="h-3 w-14 rounded bg-white/10 animate-pulse" />
+              <div className="h-8 w-40 rounded bg-white/10 animate-pulse" />
+            </div>
+            <div className="h-4 w-40 rounded bg-white/10 animate-pulse md:self-end" />
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+            {Array.from({ length: 9 }).map((_, index) => (
+              <div
+                key={index}
+                className="group aspect-square flex flex-col items-center justify-center gap-2 border border-white/5 bg-white/[0.03]"
+              >
+                <div className="h-8 w-10 rounded bg-white/10 animate-pulse" />
+                <div className="h-2.5 w-12 rounded bg-white/10 animate-pulse" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return <p className="text-xs text-red-500 md:text-center" style={{ fontFamily: "'JetBrains Mono', monospace" }}>Error: {error}</p>;
+  } 
+
   return (
     <section id="skills" className="py-28 border-t border-white/10 bg-[#080808]">
       <div className="max-w-6xl mx-auto px-6">
@@ -16,7 +51,7 @@ export default function Skills() {
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
-          {SKILLS.map((skill) => (
+          {data?.map((skill: SkillsType) => (
             <div
               key={skill.name}
               className="group aspect-square flex flex-col items-center justify-center gap-2 cursor-default transition-all duration-200 hover:scale-[1.06] hover:z-10 relative"
