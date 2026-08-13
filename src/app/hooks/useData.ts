@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { EXPERIENCE, SKILLS, EDUCATION, PROJECTS } from '../constants';
+import { EXPERIENCE, SKILLS, EDUCATION, PROJECTS, LEADERSHIP_EXPERIENCE } from '../constants';
 import type { ExperienceType } from '../constants/experience.ts';
 import type { SkillsType } from '../constants/skills.ts';
 import type { EducationType } from '../constants/education.ts';
@@ -8,13 +8,14 @@ import type { ProjectType } from '../constants/projects.ts';
 // Simulate API delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-type DataType = 'experience' | 'skills' | 'education' | 'projects';
+type DataType = 'experience' | 'skills' | 'education' | 'projects' | 'leadership';
 
 type DataMap = {
   experience: ExperienceType[];
   skills: SkillsType[];
   education: EducationType[];
   projects: ProjectType[];
+  leadership: ExperienceType[];
 };
 
 const dataMap: DataMap = {
@@ -22,6 +23,7 @@ const dataMap: DataMap = {
   skills: SKILLS,
   education: EDUCATION,
   projects: PROJECTS,
+  leadership: LEADERSHIP_EXPERIENCE,
 };
 
 interface UseDataResult<T> {
@@ -41,7 +43,7 @@ export function useData<T = any>(type: DataType): UseDataResult<T> {
       setLoading(true);
       setError(null);
       // Simulate network delay
-      await delay(300);
+      await delay(2300);
       const result = dataMap[type];
       setData(result as T);
     } catch (err) {
@@ -74,6 +76,7 @@ export function useGraphQLQuery<T = any>(query: string): UseDataResult<T> {
         // Parse query to determine what to return (simplified)
         const type = query.includes('experience') ? 'experience' :
                      query.includes('skills') ? 'skills' :
+                     query.includes('leadership') ? 'leadership' :
                      query.includes('education') ? 'education' : 'projects';
         const result = dataMap[type as DataType];
         setData(result as T);

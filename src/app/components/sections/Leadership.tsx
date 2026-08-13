@@ -5,7 +5,7 @@ import SectionHeader from '../shared/SectionHeader';
 import { useData } from '@/app/hooks/useData';
 
 export default function Leadership() {
-  const { data, loading, error } = useData<ExperienceType[]>('experience');
+  const { data, loading, error } = useData<ExperienceType[]>('leadership');
   
   if (loading) {
     return (

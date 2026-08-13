@@ -1,4 +1,4 @@
-import { PROJECTS } from '@/app/constants/projects';
+import { PROJECTS, ProjectType } from '@/app/constants/projects';
 import { ProjectPreview } from '../shared/ProjectPreview';
 import { ExternalLink } from 'lucide-react';
 import { SkillsBadge } from '../shared/SkillsBadge';
@@ -8,7 +8,7 @@ import { useData } from '@/app/hooks/useData';
 export const Projects = () => {
   const { data, loading, error } = useData('projects');
 
-  if (loading) {
+  if (loading && !data) {
     return (
       <section id="projects" className="py-28 border-t border-white/10 bg-[#080808]">
         <div className="max-w-6xl mx-auto px-6">
@@ -60,7 +60,7 @@ export const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          {PROJECTS.map((project, i) => (
+          {data?.map((project: ProjectType, i: number) => (
             <article
               key={i}
               className="group flex flex-col border border-white/10 hover:border-[#D4D4D4]/60 transition-all duration-300"

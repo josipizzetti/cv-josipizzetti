@@ -80,7 +80,7 @@ export default function Hero() {
                 className="absolute -bottom-5 -right-5 bg-[#f3ec86] px-4 py-2 text-black text-xs font-bold tracking-[0.2em] uppercase"
                 style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
-                9+ YRS
+                10+ YRS
               </div>
             </div>
           </div>

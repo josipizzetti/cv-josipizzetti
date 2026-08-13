@@ -12,20 +12,21 @@ const About = () => {
               I live at the intersection of <span className="text-[#f3ec86]">design thinking</span> and <span className="text-[#f3ec86]">engineering rigour</span> — translating complex ideas into interfaces that feel effortless.
             </p>
             <p className="text-sm md:text-base text-[#fffeff] leading-relaxed max-w-xl">
-              I help e-commerce platforms, SaaS startups, and scale-ups turn complex Figma designs into high-performance React, Next.js, and React Native applications. With a background at Shopify and experience serving 500,000+ monthly users, I specialize in migrating legacy systems, optimizing page load speeds, and building cross-platform mobile experiences that drive merchant retention. Available for end-to-end project delivery, team augmentation, or technical consulting.
+              I help e-commerce platforms, SaaS startups, and scale-ups turn complex Figma designs into high-performance React, Next.js, and React Native applications — written in TypeScript for type safety and maintainability at scale. With a background at Shopify and experience serving 500,000+ monthly users, I specialize in migrating legacy systems, optimizing page load speeds, and building cross-platform mobile experiences that drive merchant retention.
             </p>
             <p className="text-sm md:text-base text-[#fffeff] leading-relaxed max-w-xl">
               What I Deliver:
             </p>
             <ul className="text-sm md:text-base text-[#fffeff] leading-relaxed max-w-xl space-y-2">
-              <li>🚀 Next.js Migrations – Full rewrites from legacy PHP to modern, SEO-optimized React.</li>
-              <li>📱 React Native Apps – Cross-platform iOS/Android, pixel-perfect from Figma.</li>
+              <li>⚛️ React & TypeScript – Production-grade components, hooks, and state management (Redux, Zustand, Context API) with full type safety.</li>
+              <li>🚀 Next.js Migrations – Full rewrites from legacy PHP to modern, SEO-optimized React with SSR, SSG, and ISR.</li>
+              <li>📱 React Native Apps – Cross-platform iOS/Android, pixel-perfect from Figma, written in TypeScript.</li>
               <li>⚡ Performance Audits – Slashing LCP & Core Web Vitals for 500k+ user platforms.</li>
               <li>🛠 Design Systems – Aligning custom components with enterprise guidelines.</li>
               <li>🤝 Tech Mentorship – Upskilling junior dev teams for your project.</li>
             </ul>
             <p className="text-sm md:text-base text-[#fffeff] leading-relaxed max-w-xl">
-              Open to freelance contracts and consulting engagements. Let's connect – I'd love to hear about your next project.
+              Open to permanent, freelance, and consulting engagements — from end-to-end project delivery to team augmentation and technical mentorship. Let's connect — I'd love to hear about your next project.
             </p>
             <div className="flex flex-wrap gap-6 pt-4">
               <a

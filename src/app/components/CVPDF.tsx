@@ -231,7 +231,10 @@ export const CVPDF = () => (
           I live at the intersection of design thinking and engineering rigour — translating complex ideas into interfaces that feel effortless.
         </Text>
         <Text style={[styles.aboutText, { marginTop: 3 }]}>
-          I help e-commerce platforms, SaaS startups, and scale-ups turn complex Figma designs into high-performance React, Next.js, and React Native applications. With a background at Shopify and experience serving 500,000+ monthly users, I specialize in migrating legacy systems, optimizing page load speeds, and building cross-platform mobile experiences that drive merchant retention. Available for end-to-end project delivery, team augmentation, or technical consulting.
+          I help e-commerce platforms, SaaS startups, and scale-ups turn complex Figma designs into high-performance React, Next.js, and React Native applications — written in TypeScript for type safety and maintainability at scale. With a background at Shopify and experience serving 500,000+ monthly users, I specialize in migrating legacy systems, optimizing page load speeds, and building cross-platform mobile experiences that drive merchant retention.
+        </Text>
+        <Text style={[styles.aboutText, { marginTop: 3 }]}>
+          I am available for permanent roles, freelance contracts, or consulting engagements — from end-to-end project delivery to team augmentation and technical mentorship.
         </Text>
       </View>
 
