@@ -89,6 +89,31 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 4,
   },
+  experienceDesc: {
+    fontSize: 8,
+    lineHeight: 1.4,
+    color: '#444',
+    marginTop: 2,
+    marginBottom: 3,
+  },
+  bulletPoint: {
+    fontSize: 7.5,
+    lineHeight: 1.4,
+    color: '#444',
+    paddingLeft: 12,
+    marginTop: 1,
+    marginBottom: 1,
+  },
+  bulletMarker: {
+    fontSize: 7.5,
+    color: '#666',
+    marginRight: 4,
+  },
+  bulletText: { 
+    paddingLeft: 12, 
+    marginTop: 2,
+    fontSize: 7.5,
+  },
   role: {
     fontSize: 9.5,
     fontWeight: 'bold',
@@ -106,14 +131,6 @@ const styles = StyleSheet.create({
   location: {
     fontSize: 8,
     color: '#999',
-  },
-  experienceDesc: {
-    fontSize: 8,
-    lineHeight: 1.4,
-    color: '#444',
-    marginTop: 8,
-    alignment: 'justify',
-    marginBottom: 8,
   },
   tagsContainer: {
     flexDirection: 'row',
@@ -253,7 +270,35 @@ export const CVPDF = () => (
                 <Text style={styles.location}>{exp.location}</Text>
               </View>
             </View>
-            <Text style={styles.experienceDesc}>{exp.desc}</Text>
+            
+            {/* Description with line breaks */}
+            <View style={{ marginTop: 2, marginBottom: 3 }}>
+              {exp.desc.split('\n').map((line, idx) => {
+                // Check if line is a bullet point (starts with •, -, or has \n•)
+                const isBullet = line.trim().startsWith('•') || 
+                                line.trim().startsWith('-') ||
+                                line.trim().startsWith('•');
+                
+                // Clean up the line
+                const cleanLine = line.trim().replace(/^[•\-]\s*/, '');
+                
+                // Skip empty lines
+                if (!line.trim()) return null;
+                
+                return (
+                  <Text 
+                    key={idx} 
+                    style={[
+                      styles.experienceDesc,
+                      ...(isBullet ? [styles.bulletText] : [])
+                    ]}
+                  >
+                    {isBullet ? `• ${cleanLine}` : line.trim()}
+                  </Text>
+                );
+              })}
+            </View>
+            
             <View style={styles.tagsContainer}>
               {exp.tags.map((tag, j) => (
                 <Text key={j} style={styles.tag}>{tag}</Text>

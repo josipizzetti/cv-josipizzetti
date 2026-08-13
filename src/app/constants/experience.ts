@@ -22,10 +22,10 @@ export const EXPERIENCE: ExperienceType[] = [
     period: "Mar 2025 — Present",
     location: "Remote",
     desc: `Designed, built, and launched a branded e‑commerce store for premium fashion jewelry, using Shopify as the platform. I managed the entire project from concept to launch, including:
-Web Development: Customized the Shopify storefront to reflect a premium, cohesive brand experience.
-E‑Commerce Operations: Set up product catalogs, inventory management, and secure payment gateways to ensure a seamless shopping experience.
-Creative & Content: Defined the visual identity, styled and directed product photography, and wrote compelling product descriptions to drive conversions.
-Product Sourcing & Fulfillment: Managed supplier relationships, inventory levels, and order fulfillment independently.
+• Web Development: Customized the Shopify storefront to reflect a premium, cohesive brand experience.
+• E‑Commerce Operations: Set up product catalogs, inventory management, and secure payment gateways to ensure a seamless shopping experience.
+• Creative & Content: Defined the visual identity, styled and directed product photography, and wrote compelling product descriptions to drive conversions.
+• Product Sourcing & Fulfillment: Managed supplier relationships, inventory levels, and order fulfillment independently.
 This project deepened my understanding of the full e‑commerce lifecycle—from customer acquisition to fulfillment—and reinforced my ability to build and grow a digital product end‑to‑end.`,
     tags: ["SEO", "Performance Optimization", "Content Creation", "Personal Branding", "E-Commerce", "Shopify", "Web Development", "Product Sourcing", "Fulfillment", "Customer Experience"],
   },

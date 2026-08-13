@@ -3,6 +3,7 @@ import { ExperienceType } from '@/app/constants/experience';
 import { SkillsBadge } from '../shared/SkillsBadge';
 import SectionHeader from '../shared/SectionHeader';
 import { useData } from '@/app/hooks/useData';
+import { formatDescription, isBulletPoint, cleanBulletPoint } from '@/utils/textUtils';
 
 export default function Experience() {
   const { data, loading, error } = useData<ExperienceType[]>('experience');
@@ -59,7 +60,9 @@ export default function Experience() {
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeader index="03" label="Experience" title={<>Where I've<br />Worked</>}/>
         <div>
-          {data?.map((exp: ExperienceType, i: number) => (
+          {data?.map((exp: ExperienceType, i: number) => {
+            const lines = formatDescription(exp.desc);
+            return (
             <div
               key={i}
               className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-white/10 hover:bg-white/[0.02] transition-colors duration-300"
@@ -99,7 +102,38 @@ export default function Experience() {
                 >
                   {exp.company}
                 </p>
-                <p className="text-sm text-[#fffeff] leading-relaxed mb-4">{exp.desc}</p>
+                <div className="space-y-2 mb-4">
+                  {lines.map((line, lineIndex) => {
+                      const isBullet = isBulletPoint(line);
+                      const cleanLine = isBullet ? cleanBulletPoint(line) : line;
+                      
+                      if (lineIndex === 0 && !isBullet) {
+                        return (
+                          <p key={lineIndex} className="text-sm md:text-base text-[#fffeff] leading-relaxed mb-3 print:text-gray-700 print:text-xs">
+                            {line.trim()}
+                          </p>
+                        );
+                      }
+                      
+                      // Bullet point
+                      if (isBullet) {
+                        return (
+                          <div key={lineIndex} className="flex items-start gap-2 text-sm text-[#fffeff] leading-relaxed mb-1 print:text-gray-700 print:text-xs">
+                            <span className="text-[#f3ec86] print:text-black">•</span>
+                            <span>{cleanLine}</span>
+                          </div>
+                        );
+                      } else {
+                      
+                      // Other text (non-bullet, non-first)
+                      return (
+                        <p key={lineIndex} className="text-sm text-[#fffeff] leading-relaxed mb-2 print:text-gray-700 print:text-xs">
+                          {line.trim()}
+                        </p>
+                      );
+                    }
+                    })}
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {exp.tags.map((tag) => (
                     <SkillsBadge key={tag} tag={tag} />
@@ -107,7 +141,7 @@ export default function Experience() {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>
