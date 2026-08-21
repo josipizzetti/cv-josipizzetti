@@ -2,7 +2,7 @@ import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/render
 
 // Import your data and avatar image
 import { EXPERIENCE, SKILLS, LEADERSHIP_EXPERIENCE, EDUCATION } from '../constants';
-import avatarImage from '@/assets/josi.jpg';
+import avatarImage from '@/assets/josi-small.jpeg';
 
 // PDF styles - clean and professional layout
 const styles = StyleSheet.create({
